@@ -1,0 +1,50 @@
+﻿@model PokeriaCapstone.Models.T_Ingredienti
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>T_Ingredienti</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeIngrediente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeIngrediente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoIngrediente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoIngrediente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrezzoAggiuntivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrezzoAggiuntivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FotoIngrediente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FotoIngrediente)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDIngrediente }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -27,6 +27,9 @@ namespace PokeriaCapstone.Models
         [Column(TypeName = "money")]
         public decimal? Prezzo { get; set; }
 
+        [StringLength(150)]
+        public string FotoPoke { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<T_Ordini> T_Ordini { get; set; }
 

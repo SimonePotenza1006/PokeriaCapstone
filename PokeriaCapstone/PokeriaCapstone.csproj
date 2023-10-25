@@ -168,6 +168,10 @@
     <Compile Include="Migrations\202310231443387_FirstMigration.designer.cs">
       <DependentUpon>202310231443387_FirstMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310250830540_SecondMigration.cs" />
+    <Compile Include="Migrations\202310250830540_SecondMigration.designer.cs">
+      <DependentUpon>202310250830540_SecondMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ModelDBContext.cs" />
     <Compile Include="Models\SiteRole.cs" />
@@ -178,6 +182,7 @@
     <Compile Include="Models\T_RelazionePokeIngredienti.cs" />
     <Compile Include="Models\T_User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Home\T_IngredientiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -244,9 +249,17 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\T_Ingredienti\Create.cshtml" />
+    <Content Include="Views\T_Ingredienti\Delete.cshtml" />
+    <Content Include="Views\T_Ingredienti\Details.cshtml" />
+    <Content Include="Views\T_Ingredienti\Edit.cshtml" />
+    <Content Include="Views\T_Ingredienti\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Assets\FotoIngredienti\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -278,6 +291,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202310231443387_FirstMigration.resx">
       <DependentUpon>202310231443387_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310250830540_SecondMigration.resx">
+      <DependentUpon>202310250830540_SecondMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

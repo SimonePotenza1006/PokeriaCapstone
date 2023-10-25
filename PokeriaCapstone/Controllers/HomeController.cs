@@ -28,12 +28,37 @@ namespace PokeriaCapstone.Controllers
         {
             if (ModelState.IsValid)
             {
-                T_User utente = db.T_User.Where(u => u.Username == user.Username && u.Password == user.Password).FirstOrDefault();
+                T_User utente = db.T_User.Where(u => u.Email == user.Email && u.Password == user.Password).FirstOrDefault();
                 FormsAuthentication.SetAuthCookie(utente.Username, false);
-                Session["IDCliente"] = utente.IDUtente;
+                Session["Username"] = utente.Username;
                 return RedirectToAction("Index");
             }
             return View();
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register([Bind(Exclude = "Role")] T_User user)
+        {
+            if (ModelState.IsValid)
+            {
+                user.Role = "User";
+                db.T_User.Add(user);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
         }
 
     }
