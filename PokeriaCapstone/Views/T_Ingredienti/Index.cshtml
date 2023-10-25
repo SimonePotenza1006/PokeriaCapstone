@@ -9,43 +9,18 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NomeIngrediente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoIngrediente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PrezzoAggiuntivo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FotoIngrediente)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomeIngrediente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoIngrediente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrezzoAggiuntivo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FotoIngrediente)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDIngrediente }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDIngrediente }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDIngrediente })
-        </td>
-    </tr>
-}
+<div class="row row-cols-2">
+    @foreach (var item in Model)
+    {
+        <div class="card col" style="width: 18rem;">
+            <img src="~/Content/Assets/FotoIngredienti/@Html.DisplayFor(modelItem => item.FotoIngrediente)" class="card-img-top" alt="FotoIngrediente">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.NomeIngrediente)</h5>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.PrezzoAggiuntivo)</p>
+                <a class="btn btn-primary" value="@Html.DisplayFor(modelItem => item.IDIngrediente)" onclick="AggiungiIngrediente">Aggiungi alla Poke</a>
+            </div>
+        </div>
+    }
+</div>
 
-</table>

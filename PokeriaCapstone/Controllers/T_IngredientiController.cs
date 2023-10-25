@@ -11,10 +11,19 @@ using PokeriaCapstone.Models;
 
 namespace PokeriaCapstone.Views.Home
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class T_IngredientiController : Controller
     {
         private ModelDBContext db = new ModelDBContext();
+
+        //Vado a creare una lista inserendo dei numeri da 1 a 9, che poi andró a sostituire dinamicamente
+        //Tramite JS cliccando sul pulsante di aggiunta alla poke
+
+        public List<int> ListaIDIngredienti = new List<int>()
+        {
+            1, 2, 3, 4, 5, 6, 7, 8, 9
+        };
+
 
         // GET: T_Ingredienti
         public ActionResult Index()
