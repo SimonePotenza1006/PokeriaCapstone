@@ -10,17 +10,164 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-<div class="row row-cols-2">
-    @foreach (var item in Model)
-    {
-        <div class="card col" style="width: 18rem;">
-            <img src="~/Content/Assets/FotoIngredienti/@Html.DisplayFor(modelItem => item.FotoIngrediente)" class="card-img-top" alt="FotoIngrediente">
-            <div class="card-body">
-                <h5 class="card-title">@Html.DisplayFor(modelItem => item.NomeIngrediente)</h5>
-                <p class="card-text">@Html.DisplayFor(modelItem => item.PrezzoAggiuntivo)</p>
-                <a class="btn btn-primary" value="@Html.DisplayFor(modelItem => item.IDIngrediente)" onclick="AggiungiIngrediente">Aggiungi alla Poke</a>
-            </div>
-        </div>
-    }
+<h5>Basi</h5>
+<div id="divBasi" class="row row-cols-4">
+
 </div>
+
+<h5>Proteine</h5>
+<div id="divProteine" class="row row-cols-4 gap-2">
+
+</div>
+
+<h5>Contorni</h5>
+<div id="divContorni" class="row row-cols-4">
+
+</div>
+
+<h5>Topping</h5>
+<div id="divTopping" class="row row-cols-4">
+
+</div>
+
+<h5>Salse</h5>
+<div id="divSalse" class="row row-cols-4">
+
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                method: "GET",
+                url: "GetBasi",
+                success: function (data) {
+                    console.log(data)
+                    $.each(data, function (i, item) {
+                        let div = "<div class='card col' style='width: 18rem;'>" +
+                            "<img class='cart-img-top' id='" + item.Id + "'  src='/Content/Assets/FotoIngredienti/" + item.Foto + "'/>" +
+                            "<div class='card-body'>" +
+                            "<h6 class='card-title'>" + item.Nome + "</h6>" +
+                            "<p class='card-text'> Prezzo aggiuntivo:" + item.Prezzo + "€</p>" +
+                            "</div>" +
+                            "<div>" +
+                            "<a class='btn btn-primary add' onclick=addBase(" + item.Id + ")> Aggiungi </button>" +
+                            "</div>" +
+                            "</div>"
+                        $("#divBasi").append(div)
+
+                    })
+                }
+            })
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                method: "GET",
+                url: "GetProteine",
+                success: function (data) {
+                    console.log(data)
+                    $.each(data, function (i, item) {
+                        let div = "<div class='card col' style='width: 18rem;'>" +
+                            "<img class='cart-img-top' id='" + item.Id + "'  src='/Content/Assets/FotoIngredienti/" + item.Foto + "'/>" +
+                            "<div class='card-body'>" +
+                            "<h6 class='card-title'>" + item.Nome + "</h6>" +
+                            "<p class='card-text'> Prezzo aggiuntivo:" + item.Prezzo + "€</p>" +
+                            "</div>" +
+                            "<div id='" + item.Id + "' class='" + item.Tipo + "'>" +
+                            "<a class='btn btn-primary add' onclick=addProteina(" + item.Id + ")> Aggiungi </button>" +
+                            "</div>" +
+                            "</div>"
+                        $("#divProteine").append(div)
+
+                    })
+                }
+            })
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                method: "GET",
+                url: "GetContorni",
+                success: function (data) {
+                    console.log(data)
+                    $.each(data, function (i, item) {
+                        let div = "<div class='card col' style='width: 18rem;'>" +
+                            "<img class='cart-img-top' id='" + item.Id + "'  src='/Content/Assets/FotoIngredienti/" + item.Foto + "'/>" +
+                            "<div class='card-body'>" +
+                            "<h6 class='card-title'>" + item.Nome + "</h6>" +
+                            "<p class='card-text'> Prezzo aggiuntivo:" + item.Prezzo + "€</p>" +
+                            "</div>" +
+                            "<div id='" + item.Id + "' class='" + item.Tipo + "'>" +
+                            "<a class='btn btn-primary' onClick=addContorno(" + item.Id + ")> Aggiungi </button>" +
+                            "</div>" +
+                            "</div>"
+                        $("#divContorni").append(div)
+
+                    })
+                }
+            })
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                method: "GET",
+                url: "GetTopping",
+                success: function (data) {
+                    console.log(data)
+                    $.each(data, function (i, item) {
+                        let div = "<div class='card col' style='width: 18rem;'>" +
+                            "<img class='cart-img-top' id='" + item.Id + "'  src='/Content/Assets/FotoIngredienti/" + item.Foto + "'/>" +
+                            "<div class='card-body'>" +
+                            "<h6 class='card-title'>" + item.Nome + "</h6>" +
+                            "<p class='card-text'> Prezzo aggiuntivo:" + item.Prezzo + "€</p>" +
+                            "</div>" +
+                            "<div id='" + item.Id + "' class='" + item.Tipo + "'>" +
+                            "<a class='btn btn-primary' onClick=addTopping(" + item.Id + ")> Aggiungi </button>" +
+                            "</div>" +
+                            "</div>"
+                        $("#divTopping").append(div)
+
+                    })
+                }
+            })
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                method: "GET",
+                url: "GetSalse",
+                success: function (data) {
+                    console.log(data)
+                    $.each(data, function (i, item) {
+                        let div = "<div class='card col' style='width: 18rem;'>" +
+                            "<img class='cart-img-top' id='" + item.Id + "'  src='/Content/Assets/FotoIngredienti/" + item.Foto + "'/>" +
+                            "<div class='card-body'>" +
+                            "<h6 class='card-title'>" + item.Nome + "</h6>" +
+                            "<p class='card-text'> Prezzo aggiuntivo:" + item.Prezzo + "€</p>" +
+                            "</div>" +
+                            "<div>" + item.Tipo + "'>" +
+                            "<a class='btn btn-primary' onClick=addSalsa(" + item.Id + ")> Aggiungi </button>" +
+                            "</div>" +
+                            "</div>"
+                        $("#divSalse").append(div)
+
+                    })
+                }
+            })
+        })
+    </script>
+    <script src="~/Scripts/AggiuntaIngredientiPoke.js">
+    </script>
+
+
+}
+
+
 

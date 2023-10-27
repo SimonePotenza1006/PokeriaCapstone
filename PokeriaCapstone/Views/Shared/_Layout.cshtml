@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title - Applicazione ASP.NET</title>
+    <link rel="stylesheet" href="~/Content/Assets/MyCss/Composizione.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -32,10 +33,9 @@
             <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/AggiuntaIngredientiPoke")
+    @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

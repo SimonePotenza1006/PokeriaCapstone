@@ -137,5 +137,96 @@ namespace PokeriaCapstone.Views.Home
             }
             base.Dispose(disposing);
         }
+
+        private class Ingrediente
+        {
+            public int Id { get; set; }
+            public string Nome { get; set; }
+            public string Tipo { get; set; }
+            public decimal Prezzo { get; set; }
+            public string Foto { get; set; }
+        }
+
+        public JsonResult GetBasi()
+        {
+            List<Ingrediente>IngredientiBase = new List<Ingrediente>();
+
+            foreach (T_Ingredienti basi in db.T_Ingredienti.ToList())
+                IngredientiBase.Add(new Ingrediente
+                {
+                    Id = basi.IDIngrediente,
+                    Nome = basi.NomeIngrediente,
+                    Tipo = basi.TipoIngrediente,
+                    Prezzo = (decimal)basi.PrezzoAggiuntivo,
+                    Foto = basi.FotoIngrediente
+                });
+            return Json(IngredientiBase.Where(i => i.Tipo == "Base").ToList(), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetProteine()
+        {
+            List<Ingrediente> IngredientiProteine = new List<Ingrediente>();
+
+            foreach (T_Ingredienti basi in db.T_Ingredienti.ToList())
+                IngredientiProteine.Add(new Ingrediente
+                {
+                    Id = basi.IDIngrediente,
+                    Nome = basi.NomeIngrediente,
+                    Tipo = basi.TipoIngrediente,
+                    Prezzo = (decimal)basi.PrezzoAggiuntivo,
+                    Foto = basi.FotoIngrediente
+                });
+            return Json(IngredientiProteine.Where(i => i.Tipo == "Proteina").ToList(), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetContorni()
+        {
+            List<Ingrediente> IngredientiContorno = new List<Ingrediente>();
+
+            foreach (T_Ingredienti basi in db.T_Ingredienti.ToList())
+                IngredientiContorno.Add(new Ingrediente
+                {
+                    Id = basi.IDIngrediente,
+                    Nome = basi.NomeIngrediente,
+                    Tipo = basi.TipoIngrediente,
+                    Prezzo = (decimal)basi.PrezzoAggiuntivo,
+                    Foto = basi.FotoIngrediente
+                });
+            return Json(IngredientiContorno.Where(i => i.Tipo == "Contorno").ToList(), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetTopping()
+        {
+            List<Ingrediente> IngredientiTopping = new List<Ingrediente>();
+
+            foreach (T_Ingredienti basi in db.T_Ingredienti.ToList())
+                IngredientiTopping.Add(new Ingrediente
+                {
+                    Id = basi.IDIngrediente,
+                    Nome = basi.NomeIngrediente,
+                    Tipo = basi.TipoIngrediente,
+                    Prezzo = (decimal)basi.PrezzoAggiuntivo,
+                    Foto = basi.FotoIngrediente
+                });
+            return Json(IngredientiTopping.Where(i => i.Tipo == "Topping").ToList(), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetSalse()
+        {
+            List<Ingrediente> IngredientiSalse = new List<Ingrediente>();
+
+            foreach (T_Ingredienti basi in db.T_Ingredienti.ToList())
+                IngredientiSalse.Add(new Ingrediente
+                {
+                    Id = basi.IDIngrediente,
+                    Nome = basi.NomeIngrediente,
+                    Tipo = basi.TipoIngrediente,
+                    Prezzo = (decimal)basi.PrezzoAggiuntivo,
+                    Foto = basi.FotoIngrediente
+                });
+            return Json(IngredientiSalse.Where(i => i.Tipo == "Salsa").ToList(), JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }
