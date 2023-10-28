@@ -8,6 +8,41 @@ let SelectedContorni = []
 let SelectedToppings = []
 let SelectedSalse = []
 
+
+let findType = function (id) {
+    let FotoIngrediente = document.getElementById(id)
+    let TipoIngrediente = FotoIngrediente.parentElement.getAttribute("type")
+    console.log(TipoIngrediente)
+    switch (TipoIngrediente) {
+        case Base:
+            if (SelectedItems.find(id) == true) {
+                alert = "Ingrediente giá inserito"
+            } else {
+                SelectedItems.push(id)
+                SelectedBase.push(id)
+            }
+            break;
+        case Proteina:
+            if (SelectedItems.find(id) == true || SelectedProteine.length >= 2) {
+                alert = "Ingrediente giá inserito"
+            } else {
+                SelectedItems.push(id)
+                SelectedProteine.push(id)
+            }
+            break;
+        case Contorno:
+            if (SelectedItems.find(id) == true || SelectedContorni.lenght >= 4) {
+                alert = "Ingrediente giá inserito"
+            } else {
+                SelectedItems.push(id)
+                SelectedContorni.push(id)
+            }
+            break;
+        case Topping:
+    }
+}
+
+
 let addBase = function (id) {
     console.log(id)
     if (SelectedItems.includes(id) == true || SelectedItems.length == 9) {
