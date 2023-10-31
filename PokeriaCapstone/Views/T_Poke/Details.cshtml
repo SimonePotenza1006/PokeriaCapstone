@@ -1,0 +1,50 @@
+﻿@model PokeriaCapstone.Models.T_Poke
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>T_Poke</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomePoke)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomePoke)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsComposta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsComposta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prezzo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prezzo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FotoPoke)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FotoPoke)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDPoke }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

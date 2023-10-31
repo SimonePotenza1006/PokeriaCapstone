@@ -41,14 +41,14 @@
                 success: function (data) {
                     console.log(data)
                     $.each(data, function (i, item) {
-                        let div = "<div class='card col' type='" + item.Tipo + "'style='width: 18rem;'>" +
+                        let div = "<div class='card col' price='" + item.Prezzo + "' type='" + item.Tipo + "'style='width: 18rem;'>" +
                             "<img class='cart-img-top' id='" + item.Id + "'  src='/Content/Assets/FotoIngredienti/" + item.Foto + "'/>" +
                             "<div class='card-body'>" +
                             "<h6 class='card-title'>" + item.Nome + "</h6>" +
                             "<p class='card-text'> Prezzo aggiuntivo:" + item.Prezzo + "€</p>" +
                             "</div>" +
-                            "<div tipologia='" + item.Tipo + "'>" +
-                            "<a class='btn btn-primary add' onclick=findType(" + item.Id + ")> Aggiungi </a>" +
+                            "<div>" +
+                            "<a class='btn btn-primary add' onclick=addToPoke(" + item.Id + ")> Aggiungi </a>" +
                             "</div>" +
                             "</div>"
                         $("#divBasi").append(div)
@@ -66,14 +66,14 @@
                 success: function (data) {
                     console.log(data)
                     $.each(data, function (i, item) {
-                        let div = "<div class='card col' style='width: 18rem;'>" +
+                        let div = "<div class='card col' price='" + item.Prezzo + "' type='" + item.Tipo + "'style='width: 18rem;'>" +
                             "<img class='cart-img-top' id='" + item.Id + "'  src='/Content/Assets/FotoIngredienti/" + item.Foto + "'/>" +
                             "<div class='card-body'>" +
                             "<h6 class='card-title'>" + item.Nome + "</h6>" +
                             "<p class='card-text'> Prezzo aggiuntivo:" + item.Prezzo + "€</p>" +
                             "</div>" +
-                            "<div id='" + item.Id + "' class='" + item.Tipo + "'>" +
-                            "<a class='btn btn-primary add' onclick=addProteina(" + item.Id + ")> Aggiungi </button>" +
+                            "<div>" +
+                            "<a class='btn btn-primary add' onclick=addToPoke(" + item.Id + ")> Aggiungi </a>" +
                             "</div>" +
                             "</div>"
                         $("#divProteine").append(div)
@@ -91,14 +91,14 @@
                 success: function (data) {
                     console.log(data)
                     $.each(data, function (i, item) {
-                        let div = "<div class='card col' style='width: 18rem;'>" +
+                        let div = "<div class='card col' price='" + item.Prezzo + "' type='" + item.Tipo + "'style='width: 18rem;'>" +
                             "<img class='cart-img-top' id='" + item.Id + "'  src='/Content/Assets/FotoIngredienti/" + item.Foto + "'/>" +
                             "<div class='card-body'>" +
                             "<h6 class='card-title'>" + item.Nome + "</h6>" +
                             "<p class='card-text'> Prezzo aggiuntivo:" + item.Prezzo + "€</p>" +
                             "</div>" +
-                            "<div id='" + item.Id + "' class='" + item.Tipo + "'>" +
-                            "<a class='btn btn-primary' onClick=addContorno(" + item.Id + ")> Aggiungi </button>" +
+                            "<div>" +
+                            "<a class='btn btn-primary add' onclick=addToPoke(" + item.Id + ")> Aggiungi </a>" +
                             "</div>" +
                             "</div>"
                         $("#divContorni").append(div)
@@ -116,14 +116,14 @@
                 success: function (data) {
                     console.log(data)
                     $.each(data, function (i, item) {
-                        let div = "<div class='card col' style='width: 18rem;'>" +
+                        let div = "<div class='card col' price='" + item.Prezzo + "' type='" + item.Tipo + "'style='width: 18rem;'>" +
                             "<img class='cart-img-top' id='" + item.Id + "'  src='/Content/Assets/FotoIngredienti/" + item.Foto + "'/>" +
                             "<div class='card-body'>" +
                             "<h6 class='card-title'>" + item.Nome + "</h6>" +
                             "<p class='card-text'> Prezzo aggiuntivo:" + item.Prezzo + "€</p>" +
                             "</div>" +
-                            "<div id='" + item.Id + "' class='" + item.Tipo + "'>" +
-                            "<a class='btn btn-primary' onClick=addTopping(" + item.Id + ")> Aggiungi </button>" +
+                            "<div>" +
+                            "<a class='btn btn-primary add' onclick=addToPoke(" + item.Id + ")> Aggiungi </a>" +
                             "</div>" +
                             "</div>"
                         $("#divTopping").append(div)
@@ -141,14 +141,14 @@
                 success: function (data) {
                     console.log(data)
                     $.each(data, function (i, item) {
-                        let div = "<div class='card col' style='width: 18rem;'>" +
+                        let div = "<div class='card col' price='" + item.Prezzo + "' type='" + item.Tipo + "'style='width: 18rem;'>" +
                             "<img class='cart-img-top' id='" + item.Id + "'  src='/Content/Assets/FotoIngredienti/" + item.Foto + "'/>" +
                             "<div class='card-body'>" +
                             "<h6 class='card-title'>" + item.Nome + "</h6>" +
                             "<p class='card-text'> Prezzo aggiuntivo:" + item.Prezzo + "€</p>" +
                             "</div>" +
-                            "<div>" + item.Tipo + "'>" +
-                            "<a class='btn btn-primary' onClick=addSalsa(" + item.Id + ")> Aggiungi </button>" +
+                            "<div>" +
+                            "<a class='btn btn-primary add' onclick=addToPoke(" + item.Id + ")> Aggiungi </a>" +
                             "</div>" +
                             "</div>"
                         $("#divSalse").append(div)

@@ -30,10 +30,26 @@ namespace PokeriaCapstone.Models
         [StringLength(150)]
         public string FotoPoke { get; set; }
 
+
+
+        public T_Poke(string nomePoke, bool isComposta, decimal prezzo, string fotoPoke) 
+        {
+            NomePoke = nomePoke;
+            IsComposta = isComposta;
+            Prezzo = prezzo;
+            FotoPoke = fotoPoke;
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<T_Ordini> T_Ordini { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<T_RelazionePokeIngredienti> T_RelazionePokeIngredienti { get; set; }
+
+
+        
+        
     }
+
+   
 }

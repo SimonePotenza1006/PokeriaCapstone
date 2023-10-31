@@ -1,0 +1,56 @@
+﻿@model PokeriaCapstone.Models.T_Poke
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>T_Poke</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomePoke)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomePoke)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsComposta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsComposta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prezzo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prezzo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FotoPoke)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FotoPoke)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
