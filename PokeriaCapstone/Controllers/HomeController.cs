@@ -31,6 +31,7 @@ namespace PokeriaCapstone.Controllers
                 T_User utente = db.T_User.Where(u => u.Email == user.Email && u.Password == user.Password).FirstOrDefault();
                 FormsAuthentication.SetAuthCookie(utente.Username, false);
                 Session["Username"] = utente.Username;
+                Session["IDUser"] = utente.IDUser;
                 return RedirectToAction("Index");
             }
             return View();

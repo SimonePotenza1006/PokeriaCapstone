@@ -44,6 +44,12 @@ namespace PokeriaCapstone.Controllers
             return View();
         }
 
+
+        public ActionResult RecapPoke()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult CreateNewPokeComposta()
         {
@@ -70,9 +76,7 @@ namespace PokeriaCapstone.Controllers
                     FKIDIngrediente = ingrediente,
                 }) ;
             }
-
-            return RedirectToAction("Index", "Home");
-            
+            return RedirectToAction("Index", "T_Ingredienti");    
         }
 
         // GET: T_Poke/Edit/5

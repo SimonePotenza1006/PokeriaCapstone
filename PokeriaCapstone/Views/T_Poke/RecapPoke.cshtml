@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PokeriaCapstone.Models.T_Poke>
+
+@{
+    ViewBag.Title = "RecapPoke";
+}
+
+<h2>RecapPoke</h2>
+
+@if (Session["IDUser"] != null)
+            {
+
+            }
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomePoke)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsComposta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prezzo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FotoPoke)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDPoke }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDPoke }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDPoke })
+        </td>
+    </tr>
+}
+
+</table>
