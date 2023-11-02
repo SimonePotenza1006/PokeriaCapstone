@@ -30,6 +30,10 @@
 
 </div>
 
+<div>
+    @Html.ActionLink("Crea Poke", "CreateNewPokeComposta", "T_Poke") 
+</div>
+
 @section scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
@@ -102,7 +106,6 @@
                             "</div>" +
                             "</div>"
                         $("#divContorni").append(div)
-
                     })
                 }
             })

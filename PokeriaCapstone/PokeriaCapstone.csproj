@@ -266,6 +266,7 @@
     <Content Include="Views\T_Poke\Edit.cshtml" />
     <Content Include="Views\T_Poke\Index.cshtml" />
     <Content Include="Views\T_Poke\RecapPoke.cshtml" />
+    <Content Include="Views\T_Poke\CreateNewPokeComposta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

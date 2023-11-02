@@ -8,6 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using Newtonsoft.Json;
 using PokeriaCapstone.Models;
 
@@ -50,8 +51,15 @@ namespace PokeriaCapstone.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult CreateNewPokeComposta()
+
+        [HttpGet]
+        public ActionResult CreateNewPokeComposta() 
+        { 
+            return View(); 
+        }
+
+        [HttpPost, ActionName("CreateNewPokeComposta")]
+        public ActionResult CreateNewPokeComposta1()
         {
             string PrezziAggiuntivi = (string)Session["PrezziAggiuntivi"];
             decimal PrezzoTotale = 11;
@@ -75,8 +83,14 @@ namespace PokeriaCapstone.Controllers
                     FKIDPoke = Poke.IDPoke,
                     FKIDIngrediente = ingrediente,
                 }) ;
+                db.SaveChanges();
             }
-            return RedirectToAction("Index", "T_Ingredienti");    
+
+            T_Ordini Ordine = new T_Ordini(Convert.ToInt32(Session["IDUser"]), Poke.IDPoke);
+            db.T_Ordini.Add(Ordine);
+            db.SaveChanges();
+
+            return View();
         }
 
         // GET: T_Poke/Edit/5
