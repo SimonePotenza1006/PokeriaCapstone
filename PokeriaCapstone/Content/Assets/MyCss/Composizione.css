@@ -1,8 +1,19 @@
-﻿body {
-
-}
-
-.IngredienteInserito {
+﻿.IngredienteInserito {
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
 }
+
+.mySection {
+    height: 100vh;
+}
+
+.mySection {
+    height: 100vh;
+}
+
+.card{
+    border : none !important;
+}
+
+
+

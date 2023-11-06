@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title - Applicazione ASP.NET</title>
-    <link rel="stylesheet" href="~/Content/Assets/MyCss/Composizione.css">
+    <link rel="stylesheet" href="~/Content/Assets/MyCss/Composizione.css" />
+    <link rel="stylesheet" href="~/Content/Assets/MyCss/GeneralStyle.css" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+<body class="body">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" id="navbar">
         <div class="container">
             @Html.ActionLink("Nome dell'applicazione", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
@@ -26,13 +26,48 @@
             </div>
         </div>
     </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
-        </footer>
+    <div class="background">
+        <div class="container body-content mt-0">
+
+            @RenderBody()
+        </div>
     </div>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6 class="text-dark">About</h6>
+                    <p class="text-justify text-dark">ITACHI <i>YOUR FAVORITE POKE BOWL </i> é il progetto finale del mio corso da developer full-stack in EPICODE. Essendo il lavoro finale di questo percorso, ho fatto cercato di utilizzare tutte le conoscenze apprese.</p>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6 class="text-dark">Tecnologie utilizzate:</h6>
+                    <ul class="footer-links">
+                        <li class="text-dark">HTML</li>
+                        <li class="text-dark">CSS</li>
+                        <li class="text-dark">JavaScript</li>
+                        <li class="text-dark">Bootstrap</li>
+                        <li class="text-dark">C#, MVC & Entity FrameWork</li>
+                        <li class="text-dark">SQL SERVER</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text text-black">
+                        All Rights Reserved by
+                        <a href="https://www.linkedin.com/in/simone-potenza-front-end-developer/">Simone Potenza</a>.
+                    </p>
+                </div>
+
+              
+            </div>
+        </div>
+    </footer>
+
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)

@@ -14,6 +14,7 @@ using PokeriaCapstone.Models;
 
 namespace PokeriaCapstone.Controllers
 {
+    
     public class T_PokeController : Controller
     {
         private ModelDBContext db = new ModelDBContext();
@@ -51,46 +52,36 @@ namespace PokeriaCapstone.Controllers
             return View();
         }
 
+        
 
         [HttpGet]
-        public ActionResult CreateNewPokeComposta() 
-        { 
-            return View(); 
-        }
-
-        [HttpPost, ActionName("CreateNewPokeComposta")]
-        public ActionResult CreateNewPokeComposta1()
+        public ActionResult CreateNewPokeComposta(string Prezzi, string Ingredienti)
         {
-            string PrezziAggiuntivi = (string)Session["PrezziAggiuntivi"];
-            decimal PrezzoTotale = 11;
-            List<decimal> PrezziAggiuntiviList = JsonConvert.DeserializeObject<List<decimal>>(PrezziAggiuntivi);
 
-            foreach (decimal prezzo in PrezziAggiuntiviList)
+            List<decimal> PrezziList = JsonConvert.DeserializeObject<List<decimal>>(Prezzi);
+            List<int> IngredientiList = JsonConvert.DeserializeObject<List<int>>(Ingredienti);
+            decimal PrezzoTotale = 11;
+            foreach (decimal prezzo in PrezziList)
             {
                 PrezzoTotale += prezzo;
             }
             T_Poke Poke = new T_Poke("La tua poke", true, PrezzoTotale, "");
             db.T_Poke.Add(Poke);
             db.SaveChanges();
-
-            string Ingredienti = (string)Session["Ingredienti"];
-            List<int> IngredientiList = JsonConvert.DeserializeObject<List<int>>(Ingredienti);
-
             foreach (int ingrediente in IngredientiList)
             {
                 db.T_RelazionePokeIngredienti.Add(new T_RelazionePokeIngredienti
                 {
                     FKIDPoke = Poke.IDPoke,
                     FKIDIngrediente = ingrediente,
-                }) ;
-                db.SaveChanges();
+                });
             }
-
+            db.SaveChanges();
             T_Ordini Ordine = new T_Ordini(Convert.ToInt32(Session["IDUser"]), Poke.IDPoke);
             db.T_Ordini.Add(Ordine);
             db.SaveChanges();
 
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: T_Poke/Edit/5
