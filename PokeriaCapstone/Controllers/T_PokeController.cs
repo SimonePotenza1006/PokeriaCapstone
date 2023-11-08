@@ -81,7 +81,7 @@ namespace PokeriaCapstone.Controllers
             db.T_Ordini.Add(Ordine);
             db.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            return View("Index", "T_Ordini");
         }
 
         // GET: T_Poke/Edit/5

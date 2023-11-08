@@ -12,7 +12,6 @@ namespace PokeriaCapstone.Models
         {
         }
 
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<T_Ingredienti> T_Ingredienti { get; set; }
         public virtual DbSet<T_Ordini> T_Ordini { get; set; }
         public virtual DbSet<T_Poke> T_Poke { get; set; }

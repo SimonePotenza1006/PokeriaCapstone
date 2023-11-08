@@ -162,22 +162,13 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\CreazionePokeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\T_OrdiniController.cs" />
     <Compile Include="Controllers\T_PokeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202310231443387_FirstMigration.cs" />
-    <Compile Include="Migrations\202310231443387_FirstMigration.designer.cs">
-      <DependentUpon>202310231443387_FirstMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202310250830540_SecondMigration.cs" />
-    <Compile Include="Migrations\202310250830540_SecondMigration.designer.cs">
-      <DependentUpon>202310250830540_SecondMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ModelDBContext.cs" />
     <Compile Include="Models\SiteRole.cs" />
-    <Compile Include="Models\sysdiagrams.cs" />
     <Compile Include="Models\T_Ingredienti.cs" />
     <Compile Include="Models\T_Ordini.cs" />
     <Compile Include="Models\T_Poke.cs" />
@@ -189,6 +180,7 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\Assets\LogosAndOtherPics\Logo Banner Pokeria cutted2.png" />
+    <Content Include="Content\Assets\LogosAndOtherPics\PokeComposta.png" />
     <Content Include="Content\Assets\MyCss\Composizione.css" />
     <Content Include="Content\Assets\MyCss\GeneralStyle.css" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -229,6 +221,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Scripts\AggiuntaIngredientiPoke.js" />
+    <Content Include="Scripts\AggiuntaIngredientiPokeMaxi.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -268,6 +261,12 @@
     <Content Include="Views\T_Poke\Edit.cshtml" />
     <Content Include="Views\T_Poke\Index.cshtml" />
     <Content Include="Views\T_Poke\RecapPoke.cshtml" />
+    <Content Include="Views\T_Ordini\Create.cshtml" />
+    <Content Include="Views\T_Ordini\Delete.cshtml" />
+    <Content Include="Views\T_Ordini\Details.cshtml" />
+    <Content Include="Views\T_Ordini\Edit.cshtml" />
+    <Content Include="Views\T_Ordini\Index.cshtml" />
+    <Content Include="Views\T_Ingredienti\CreatePokeComposta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -300,14 +299,6 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202310231443387_FirstMigration.resx">
-      <DependentUpon>202310231443387_FirstMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202310250830540_SecondMigration.resx">
-      <DependentUpon>202310250830540_SecondMigration.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

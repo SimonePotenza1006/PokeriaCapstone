@@ -14,10 +14,10 @@ namespace PokeriaCapstone.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-
             return View();
         }
 
+        
         public ActionResult Login()
         {
             return View();
@@ -26,15 +26,11 @@ namespace PokeriaCapstone.Controllers
         [HttpPost]
         public ActionResult Login(T_User user)
         {
-            if (ModelState.IsValid)
-            {
                 T_User utente = db.T_User.Where(u => u.Email == user.Email && u.Password == user.Password).FirstOrDefault();
                 FormsAuthentication.SetAuthCookie(utente.Username, false);
                 Session["Username"] = utente.Username;
                 Session["IDUser"] = utente.IDUser;
                 return RedirectToAction("Index");
-            }
-            return View();
         }
 
         public ActionResult Register()
@@ -50,7 +46,7 @@ namespace PokeriaCapstone.Controllers
                 user.Role = "User";
                 db.T_User.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Login", user);
             }
             return View();
         }

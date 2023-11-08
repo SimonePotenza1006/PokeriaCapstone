@@ -7,16 +7,19 @@
     height: 100vh;
 }
 
-.mySection {
-    height: 100vh;
-}
-
 .card{
     border : none !important;
 }
 
 .divRegister {
     background-color: #001A70;
+}
+
+.OrderRecapDiv {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
 }
 
 

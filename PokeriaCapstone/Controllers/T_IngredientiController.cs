@@ -23,6 +23,11 @@ namespace PokeriaCapstone.Views.Home
             return View();
         }
 
+        public ActionResult CreatePokeComposta() 
+        {
+            return View();
+        }
+
         // GET: T_Ingredienti/Details/5
         public ActionResult Details(int? id)
         {

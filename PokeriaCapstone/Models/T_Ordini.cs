@@ -9,7 +9,6 @@ namespace PokeriaCapstone.Models
     public partial class T_Ordini
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int IDOrdine { get; set; }
 
         public int FKIDUser { get; set; }
@@ -22,11 +21,13 @@ namespace PokeriaCapstone.Models
 
         public virtual T_User T_User { get; set; }
 
+        public T_Ordini() { }
+
         public T_Ordini(int fkidUser, int fkidPoke)
         {
             FKIDUser = fkidUser;
             FKIDPoke = fkidPoke;
-            DataOrdine = DateTime.Now;
+            
         }
     }
 }

@@ -29,6 +29,7 @@ namespace PokeriaCapstone.Models
         [Column(TypeName = "money")]
         public decimal? PrezzoAggiuntivo { get; set; }
 
+
         [NotMapped]
         public HttpPostedFileBase Immagine { get; set; }
 
@@ -38,5 +39,9 @@ namespace PokeriaCapstone.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<T_RelazionePokeIngredienti> T_RelazionePokeIngredienti { get; set; }
+
+
+
+
     }
 }

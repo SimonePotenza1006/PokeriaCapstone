@@ -1,6 +1,4 @@
-﻿
-
-let SelectedItems = []
+﻿let SelectedItems = []
 let AddedPrices = []
 let SelectedProteine = []
 let SelectedContorni = []
@@ -10,17 +8,17 @@ let SelectedSalse = []
 
 let addToPoke = function (id) {
     let SelectedBase = []
-    
-    
-    
+
+
+
     let FotoIngrediente = document.getElementById(id)
     let TipoIngrediente = FotoIngrediente.parentElement.getAttribute("type")
     let Price = FotoIngrediente.parentElement.getAttribute("price")
-    
+
     switch (TipoIngrediente) {
         case "Base":
             if (SelectedItems.includes(id) == true) {
-                alert ("Ingrediente giá inserito")
+                alert("Ingrediente giá inserito")
             } else {
                 SelectedItems.push(id)
                 SelectedBase.push(id)
@@ -33,27 +31,29 @@ let addToPoke = function (id) {
             }
             break;
         case "Proteina":
-            if (SelectedItems.includes(id) == true || SelectedProteine.length >= 1) {
+            if (SelectedItems.includes(id) == true || SelectedProteine.length >= 2) {
                 alert("Ingrediente giá inserito")
             } else {
                 SelectedItems.push(id)
                 SelectedProteine.push(id)
                 AddedPrices.push(Price)
                 FotoIngrediente.classList.toggle("IngredienteInserito")
-                document.getElementById("ContorniSection").scrollIntoView({ behavior: 'smooth' })
+                if (SelectedProteine.length === 2) {
+                    document.getElementById("ContorniSection").scrollIntoView({ behavior: 'smooth' })
+                }
                 console.log("Ingredienti scelti:", SelectedItems)
-                console.log("Prezzi aggiuntivi:", AddedPrices)    
+                console.log("Prezzi aggiuntivi:", AddedPrices)
             }
             break;
         case "Contorno":
-            if (SelectedItems.includes(id) == true || SelectedContorni.lenght >= 4) {
+            if (SelectedItems.includes(id) == true || SelectedContorni.lenght >= 5) {
                 alert("Ingrediente giá inserito")
             } else {
                 SelectedItems.push(id)
                 SelectedContorni.push(id)
                 AddedPrices.push(Price)
                 FotoIngrediente.classList.toggle("IngredienteInserito")
-                if (SelectedContorni.length === 4) {
+                if (SelectedContorni.length === 5) {
                     document.getElementById("ToppingSection").scrollIntoView({ behavior: 'smooth' })
                 }
                 console.log("Ingredienti scelti:", SelectedItems)
@@ -62,29 +62,32 @@ let addToPoke = function (id) {
             }
             break;
         case "Topping":
-            if (SelectedItems.includes(id) == true || SelectedToppings.lenght >= 1) {
+            if (SelectedItems.includes(id) == true || SelectedToppings.lenght >= 2) {
                 alert("Ingrediente giá inserito")
             } else {
                 SelectedItems.push(id)
                 SelectedToppings.push(id)
                 AddedPrices.push(Price)
                 FotoIngrediente.classList.toggle("IngredienteInserito")
-                if (SelectedToppings.length === 1) {
+                if (SelectedToppings.length === 2) {
                     document.getElementById("SalseSection").scrollIntoView({ behavior: 'smooth' })
                 }
                 console.log("Ingredienti scelti:", SelectedItems)
                 console.log("Prezzi aggiuntivi:", AddedPrices)
-                
+
             }
             break;
         case "Salsa":
-            if (SelectedItems.includes(id) == true || SelectedSalse.length >= 1) {
+            if (SelectedItems.includes(id) == true || SelectedSalse.length >= 2) {
                 alert("Ingrediente giá inserito")
             } else {
                 SelectedItems.push(id)
                 SelectedToppings.push(id)
                 AddedPrices.push(Price)
                 FotoIngrediente.classList.toggle("IngredienteInserito")
+                if (SelectedSalse.length === 2) {
+                    document.getElementById("ConfermaSection").scrollIntoView({ behavior: 'smooth' })
+                }
                 console.log("Ingredienti scelti:", SelectedItems)
                 console.log("Prezzi aggiuntivi:", AddedPrices)
             }
@@ -105,10 +108,3 @@ let removeFromPoke = function (id) {
         FotoIngrediente.classList.toggle("IngredienteInserito")
     } else { alert("L'ingrediente selezionato non risulta inserito nella tua poké") }
 }
-
-
-
-
-
-    
-

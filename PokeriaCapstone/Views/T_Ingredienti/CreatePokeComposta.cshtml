@@ -1,15 +1,14 @@
 ﻿@model IEnumerable<PokeriaCapstone.Models.T_Ingredienti>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "CreatePokeComposta";
 }
-
 
 <section class="d-flex justify-content-center align-items-center mySection flex-column">
     <div class="text-center">
         <h2 class="text-center text-light fw-bold mb-5">Basi</h2>
     </div>
-    
+
     <div id="divBasi" class="row row-cols-4">
     </div>
 </section>
@@ -40,9 +39,9 @@
     </div>
     <div id="divTopping" class="row row-cols-4">
     </div>
-</section>                                                      
-                                                                
-                            
+</section>
+
+
 <section class="d-flex justify-content-center align-items-center mySection flex-column" id="SalseSection">
     <div class="text-center">
         <h3 class="text-center text-light fw-bold mb-5">Salse</h3>
@@ -51,12 +50,12 @@
     </div>
 </section>
 
-
 <section class="d-flex justify-content-center align-items-center mySection flex-column" id="ConfermaSection">
     <div>
         <button class="btn btn-success" onclick="AddPoke()"> Crea la tua Poke</button>
     </div>
 </section>
+
 
 @section scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -190,7 +189,7 @@
             })
         })
     </script>
-    <script src="~/Scripts/AggiuntaIngredientiPoke.js">
+    <script src="~/Scripts/AggiuntaIngredientiPokeMaxi.js">
     </script>
     <script>
         function AddPoke() {
@@ -207,11 +206,9 @@
                 },
             })
         }
-        
+
     </script>
 
 
 }
-
-
 

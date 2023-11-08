@@ -25,20 +25,11 @@ namespace PokeriaCapstone.Models
         public bool? IsComposta { get; set; }
 
         [Column(TypeName = "money")]
+        [DisplayFormat(DataFormatString = "{0:C0}")]
         public decimal? Prezzo { get; set; }
 
         [StringLength(150)]
         public string FotoPoke { get; set; }
-
-
-
-        public T_Poke(string nomePoke, bool isComposta, decimal prezzo, string fotoPoke) 
-        {
-            NomePoke = nomePoke;
-            IsComposta = isComposta;
-            Prezzo = prezzo;
-            FotoPoke = fotoPoke;
-        }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<T_Ordini> T_Ordini { get; set; }
@@ -47,9 +38,12 @@ namespace PokeriaCapstone.Models
         public virtual ICollection<T_RelazionePokeIngredienti> T_RelazionePokeIngredienti { get; set; }
 
 
-        
-        
+        public T_Poke(string nomePoke, bool isComposta, decimal prezzo, string fotoPoke)
+        {
+            NomePoke = nomePoke;
+            IsComposta = isComposta;
+            Prezzo = prezzo;
+            FotoPoke = fotoPoke;
+        }
     }
-
-   
 }
