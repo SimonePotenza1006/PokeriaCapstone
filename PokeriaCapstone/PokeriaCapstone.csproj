@@ -160,7 +160,6 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\CreazionePokeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\T_OrdiniController.cs" />
     <Compile Include="Controllers\T_PokeController.cs" />
@@ -168,6 +167,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelDBContext.cs" />
+    <Compile Include="Models\PokeMenu.cs" />
     <Compile Include="Models\SiteRole.cs" />
     <Compile Include="Models\T_Ingredienti.cs" />
     <Compile Include="Models\T_Ordini.cs" />
@@ -266,11 +266,12 @@
     <Content Include="Views\T_Ordini\Details.cshtml" />
     <Content Include="Views\T_Ordini\Edit.cshtml" />
     <Content Include="Views\T_Ordini\Index.cshtml" />
-    <Content Include="Views\T_Ingredienti\CreatePokeComposta.cshtml" />
+    <Content Include="Views\T_Poke\CreatePokeMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Assets\FotoIngredienti\" />
+    <Folder Include="Content\Assets\FotoPokeMenu\" />
     <Folder Include="Views\Poke\" />
   </ItemGroup>
   <ItemGroup>

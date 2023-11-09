@@ -5,6 +5,7 @@ namespace PokeriaCapstone.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     public partial class T_Poke
     {
@@ -28,6 +29,9 @@ namespace PokeriaCapstone.Models
         [DisplayFormat(DataFormatString = "{0:C0}")]
         public decimal? Prezzo { get; set; }
 
+        [NotMapped]
+        public HttpPostedFileBase Immagine { get; set; }
+
         [StringLength(150)]
         public string FotoPoke { get; set; }
 
@@ -36,7 +40,6 @@ namespace PokeriaCapstone.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<T_RelazionePokeIngredienti> T_RelazionePokeIngredienti { get; set; }
-
 
         public T_Poke(string nomePoke, bool isComposta, decimal prezzo, string fotoPoke)
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
@@ -57,7 +58,6 @@ namespace PokeriaCapstone.Controllers
         [HttpGet]
         public ActionResult CreateNewPokeComposta(string Prezzi, string Ingredienti)
         {
-
             List<decimal> PrezziList = JsonConvert.DeserializeObject<List<decimal>>(Prezzi);
             List<int> IngredientiList = JsonConvert.DeserializeObject<List<int>>(Ingredienti);
             decimal PrezzoTotale = 11;
@@ -149,5 +149,102 @@ namespace PokeriaCapstone.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+
+
+        [HttpGet]
+        public ActionResult CreatePokeMenu() 
+        {
+            List<SelectListItem> IngredientiList = new List<SelectListItem>(); 
+            foreach (T_Ingredienti ingrediente in db.T_Ingredienti.ToList()) 
+                IngredientiList.Add(new SelectListItem { Text = ingrediente.NomeIngrediente, Value = ingrediente.IDIngrediente.ToString() }); 
+            ViewBag.Ingredienti = IngredientiList;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreatePokeMenu(PokeMenu pokeMenu)
+        {
+            try
+            {
+                pokeMenu.FotoPokeMenu = "";
+                if (pokeMenu.Immagine != null && pokeMenu.Immagine.ContentLength > 0)
+                {
+                    var immagine = Path.GetFileName(pokeMenu.Immagine.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/Assets/FotoPokeMenu/"), immagine);
+                    pokeMenu.Immagine.SaveAs(path);
+
+                    pokeMenu.FotoPokeMenu = immagine;
+                }
+            }
+            catch { } 
+
+            T_Poke PokeToAdd = new T_Poke();
+
+            PokeToAdd.NomePoke = pokeMenu.NomePokeMenu;
+            PokeToAdd.IsComposta = false;
+            PokeToAdd.FotoPoke = pokeMenu.Immagine.ToString();
+            PokeToAdd.Prezzo = Convert.ToDecimal(pokeMenu.Prezzo);
+
+            db.T_Poke.Add(PokeToAdd);
+
+
+            db.T_RelazionePokeIngredienti.Add(new T_RelazionePokeIngredienti
+            {
+                FKIDPoke = PokeToAdd.IDPoke,
+                FKIDIngrediente = pokeMenu.BasePokeMenu,
+            });
+
+            db.T_RelazionePokeIngredienti.Add(new T_RelazionePokeIngredienti
+            {
+                FKIDPoke = PokeToAdd.IDPoke,
+                FKIDIngrediente = pokeMenu.ProteinaPokeMenu,
+            });
+
+            db.T_RelazionePokeIngredienti.Add(new T_RelazionePokeIngredienti
+            {
+                FKIDPoke = PokeToAdd.IDPoke,
+                FKIDIngrediente = pokeMenu.Contorno1PokeMenu,
+            });
+
+            db.T_RelazionePokeIngredienti.Add(new T_RelazionePokeIngredienti
+            {
+                FKIDPoke = PokeToAdd.IDPoke,
+                FKIDIngrediente = pokeMenu.Contorno2PokeMenu,
+            });
+
+            db.T_RelazionePokeIngredienti.Add(new T_RelazionePokeIngredienti
+            {
+                FKIDPoke = PokeToAdd.IDPoke,
+                FKIDIngrediente = pokeMenu.Contorno3PokeMenu,
+            });
+
+            db.T_RelazionePokeIngredienti.Add(new T_RelazionePokeIngredienti
+            {
+                FKIDPoke = PokeToAdd.IDPoke,
+                FKIDIngrediente = pokeMenu.Contorno4PokeMenu,
+            });
+
+            db.T_RelazionePokeIngredienti.Add(new T_RelazionePokeIngredienti
+            {
+                FKIDPoke = PokeToAdd.IDPoke,
+                FKIDIngrediente = pokeMenu.ToppingPokeMenu,
+            });
+
+            db.T_RelazionePokeIngredienti.Add(new T_RelazionePokeIngredienti
+            {
+                FKIDPoke = PokeToAdd.IDPoke,
+                FKIDIngrediente = pokeMenu.SalsaPokeMenu,
+            }) ;
+
+            db.SaveChanges();
+
+            Session["CreationComplete"] = "Poke correttamente inserita nel menu";
+
+            return View("Index", "Home");
+        }
+
+
     }
 }

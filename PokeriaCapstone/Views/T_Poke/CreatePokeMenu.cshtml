@@ -1,0 +1,124 @@
+﻿@model PokeriaCapstone.Models.PokeMenu
+
+@{
+    ViewBag.Title = "CreatePokeMenu";
+}
+
+<h2>CreatePokeMenu</h2>
+
+@if (Session["CreationComplete"] != null)
+            {
+                <div>
+                    <p>
+                        @Session["CreationComplete"]
+                    </p>
+                </div>
+            }
+
+@using (Html.BeginForm("CreatePokeMenu", "T_Poke", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>PokeMenu</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.NomePokeMenu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NomePokeMenu, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NomePokeMenu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Prezzo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Prezzo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Prezzo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Immagine, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="Immagine">
+            @Html.ValidationMessageFor(model => model.Immagine, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BasePokeMenu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.BasePokeMenu, new SelectList(ViewBag.Ingredienti, "Value", "Text"), "Seleziona la Base", new { @class = "form-select" })
+            @Html.ValidationMessageFor(model => model.BasePokeMenu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProteinaPokeMenu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.ProteinaPokeMenu, new SelectList(ViewBag.Ingredienti, "Value", "Text"), "Seleziona la Proteina", new { @class = "form-select" })
+            @Html.ValidationMessageFor(model => model.ProteinaPokeMenu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Contorno1PokeMenu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Contorno1PokeMenu, new SelectList(ViewBag.Ingredienti, "Value", "Text"), "Seleziona il primo contorno", new { @class = "form-select" })
+            @Html.ValidationMessageFor(model => model.Contorno1PokeMenu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Contorno2PokeMenu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Contorno2PokeMenu, new SelectList(ViewBag.Ingredienti, "Value", "Text"), "Seleziona il secondo contorno", new { @class = "form-select" })
+            @Html.ValidationMessageFor(model => model.Contorno2PokeMenu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Contorno3PokeMenu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Contorno3PokeMenu, new SelectList(ViewBag.Ingredienti, "Value", "Text"), "Seleziona il terzo contorno", new { @class = "form-select" })
+            @Html.ValidationMessageFor(model => model.Contorno3PokeMenu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Contorno4PokeMenu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Contorno4PokeMenu, new SelectList(ViewBag.Ingredienti, "Value", "Text"), "Seleziona il quarto contorno", new { @class = "form-select" })
+            @Html.ValidationMessageFor(model => model.Contorno4PokeMenu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ToppingPokeMenu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.ToppingPokeMenu, new SelectList(ViewBag.Ingredienti, "Value", "Text"), "Seleziona il topping", new { @class = "form-select" })
+            @Html.ValidationMessageFor(model => model.ToppingPokeMenu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SalsaPokeMenu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.SalsaPokeMenu, new SelectList(ViewBag.Ingredienti, "Value", "Text"), "Seleziona la salsa", new { @class = "form-select" })
+            @Html.ValidationMessageFor(model => model.SalsaPokeMenu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
