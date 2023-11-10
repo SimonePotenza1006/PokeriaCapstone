@@ -97,13 +97,60 @@ let addToPoke = function (id) {
 let removeFromPoke = function (id) {
 
     let FotoIngrediente = document.getElementById(id)
+    let TipoIngrediente = FotoIngrediente.parentElement.getAttribute("type")
 
-    if (SelectedItems.includes(id) == true) {
-        let position = SelectedItems.indexOf(id)
-        SelectedItems.splice(position, 1)
-        AddedPrices.splice(position, 1)
-        FotoIngrediente.classList.toggle("IngredienteInserito")
-    } else { alert("L'ingrediente selezionato non risulta inserito nella tua poké") }
+    switch (TipoIngrediente) {
+        case "Base":
+            if (SelectedItems.includes(id) == true) {
+                let position1 = SelectedItems.indexOf(id)
+                let position2 = SelectedBase.indexOf(id)
+                SelectedItems.splice(position1, 1)
+                AddedPrices.splice(position1, 1)
+                SelectedBase.splice(position2, 1)
+                FotoIngrediente.classList.toggle("IngredienteInserito")
+            } else { alert("L'ingrediente selezionato non risulta inserito nella tua poké") }
+            break
+        case "Proteina":
+            if (SelectedItems.includes(id) == true) {
+                let position1 = SelectedItems.indexOf(id)
+                let position2 = SelectedProteine.indexOf(id)
+                SelectedItems.splice(position1, 1)
+                AddedPrices.splice(position1, 1)
+                SelectedProteine.splice(position2, 1)
+                FotoIngrediente.classList.toggle("IngredienteInserito")
+            } else { alert("L'ingrediente selezionato non risulta inserito nella tua poké") }
+            break
+        case "Contorno":
+            if (SelectedItems.includes(id) == true) {
+                let position1 = SelectedItems.indexOf(id)
+                let position2 = SelectedContorni.indexOf(id)
+                SelectedItems.splice(position1, 1)
+                AddedPrices.splice(position1, 1)
+                SelectedContorni.splice(position2, 1)
+                FotoIngrediente.classList.toggle("IngredienteInserito")
+            } else { alert("L'ingrediente selezionato non risulta inserito nella tua poké") }
+            break
+        case "Topping":
+            if (SelectedItems.includes(id) == true) {
+                let position1 = SelectedItems.indexOf(id)
+                let position2 = SelectedToppings.indexOf(id)
+                SelectedItems.splice(position1, 1)
+                AddedPrices.splice(position1, 1)
+                SelectedToppings.splice(position2, 1)
+                FotoIngrediente.classList.toggle("IngredienteInserito")
+            } else { alert("L'ingrediente selezionato non risulta inserito nella tua poké") }
+            break
+        case "Salsa":
+            if (SelectedItems.includes(id) == true) {
+                let position1 = SelectedItems.indexOf(id)
+                let position2 = SelectedSalse.indexOf(id)
+                SelectedItems.splice(position1, 1)
+                AddedPrices.splice(position1, 1)
+                SelectedSalse.splice(position2, 1)
+                FotoIngrediente.classList.toggle("IngredienteInserito")
+            } else { alert("L'ingrediente selezionato non risulta inserito nella tua poké") }
+            break
+    }
 }
 
 

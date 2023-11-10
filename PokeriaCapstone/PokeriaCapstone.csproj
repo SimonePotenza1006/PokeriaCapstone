@@ -179,7 +179,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
-    <Content Include="Content\Assets\LogosAndOtherPics\Logo Banner Pokeria cutted2.png" />
+    <Content Include="Content\Assets\LogosAndOtherPics\Carosello1.jpg" />
+    <Content Include="Content\Assets\LogosAndOtherPics\Carosello2.jpg" />
+    <Content Include="Content\Assets\LogosAndOtherPics\Carosello3.jpg" />
+    <Content Include="Content\Assets\LogosAndOtherPics\Logo Banner Pokeria cutted.png" />
+    <Content Include="Content\Assets\LogosAndOtherPics\Logo Banner Pokeria logo.png" />
+    <Content Include="Content\Assets\LogosAndOtherPics\Logo Banner Pokeria name.png" />
+    <Content Include="Content\Assets\LogosAndOtherPics\Logo Banner Pokeria name2.png" />
     <Content Include="Content\Assets\LogosAndOtherPics\PokeComposta.png" />
     <Content Include="Content\Assets\MyCss\Composizione.css" />
     <Content Include="Content\Assets\MyCss\GeneralStyle.css" />

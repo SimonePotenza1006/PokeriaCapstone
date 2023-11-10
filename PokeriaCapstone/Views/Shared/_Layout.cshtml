@@ -12,9 +12,21 @@
     <link rel="stylesheet" href="~/Content/Assets/MyCss/GeneralStyle.css" />
 </head>
 <body class="body">
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" id="navbar">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark" id="navbar">
         <div class="container">
-            @Html.ActionLink("Nome dell'applicazione", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <div class="d-flex justify-content-center">
+                <div>
+                    <a>
+                        <img src="~/Content/Assets/LogosAndOtherPics/Logo Banner Pokeria logo.png" height="50" />
+                    </a>
+                </div>
+                <div>
+                    <a>
+                        <img src="~/Content/Assets/LogosAndOtherPics/Logo Banner Pokeria name2.png" height="50"  />
+                    </a>
+                </div>
+            </div>
+            
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

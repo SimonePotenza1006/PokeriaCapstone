@@ -15,12 +15,24 @@
     background-color: #001A70;
 }
 
-.OrderRecapDiv {
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 20px;
-    padding: 10px;
+.myOrderCard {
+    width : 10rem;
 }
 
+.carouselDiv {
+    width : 50rem;
+}
 
+.HeroSectionLogo{
+    width: 70%;
+}
 
+.box2 {
+    background-color: rgba(255,255,255,0.5);
+    padding : 15px;
+    border-radius:20px;
+}
+
+#navbar {
+    background-color: #001A70 !important;
+}
