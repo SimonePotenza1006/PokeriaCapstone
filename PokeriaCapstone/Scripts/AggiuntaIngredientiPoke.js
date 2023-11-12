@@ -10,9 +10,6 @@ let SelectedSalse = []
 
 let addToPoke = function (id) {
     let SelectedBase = []
-    
-    
-    
     let FotoIngrediente = document.getElementById(id)
     let TipoIngrediente = FotoIngrediente.parentElement.getAttribute("type")
     let Price = FotoIngrediente.parentElement.getAttribute("price")

@@ -53,6 +53,11 @@ namespace PokeriaCapstone.Controllers
             return View();
         }
 
+        public ActionResult CreatePokeMaxi()
+        {
+            return View();
+        }
+
         
 
         [HttpGet]
@@ -81,7 +86,36 @@ namespace PokeriaCapstone.Controllers
             db.T_Ordini.Add(Ordine);
             db.SaveChanges();
 
-            return View("Index", "T_Ordini");
+            return RedirectToAction("Index", "T_Ordini");
+        }
+
+        [HttpGet]
+        public ActionResult CreateNewPokeCompostaMaxi(string Prezzi, string Ingredienti)
+        {
+            List<decimal> PrezziList = JsonConvert.DeserializeObject<List<decimal>>(Prezzi);
+            List<int> IngredientiList = JsonConvert.DeserializeObject<List<int>>(Ingredienti);
+            decimal PrezzoTotale = 13;
+            foreach (decimal prezzo in PrezziList)
+            {
+                PrezzoTotale += prezzo;
+            }
+            T_Poke Poke = new T_Poke("La tua poke", true, PrezzoTotale, "");
+            db.T_Poke.Add(Poke);
+            db.SaveChanges();
+            foreach (int ingrediente in IngredientiList)
+            {
+                db.T_RelazionePokeIngredienti.Add(new T_RelazionePokeIngredienti
+                {
+                    FKIDPoke = Poke.IDPoke,
+                    FKIDIngrediente = ingrediente,
+                });
+            }
+            db.SaveChanges();
+            T_Ordini Ordine = new T_Ordini(Convert.ToInt32(Session["IDUser"]), Poke.IDPoke);
+            db.T_Ordini.Add(Ordine);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "T_Ordini");
         }
 
         // GET: T_Poke/Edit/5
@@ -243,6 +277,12 @@ namespace PokeriaCapstone.Controllers
             Session["CreationComplete"] = "Poke correttamente inserita nel menu";
 
             return View("Index", "Home");
+        }
+
+        public ActionResult Menu()
+        {
+            List<T_Poke> Menu = db.T_Poke.Where(p => p.IsComposta == false).ToList();
+            return View(Menu);
         }
 
 

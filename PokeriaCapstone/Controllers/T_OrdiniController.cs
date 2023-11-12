@@ -99,24 +99,8 @@ namespace PokeriaCapstone.Controllers
             return View(t_Ordini);
         }
 
-        // GET: T_Ordini/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            T_Ordini t_Ordini = db.T_Ordini.Find(id);
-            if (t_Ordini == null)
-            {
-                return HttpNotFound();
-            }
-            return View(t_Ordini);
-        }
-
         // POST: T_Ordini/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public ActionResult DeleteConfirmed(int id)
         {
             T_Ordini t_Ordini = db.T_Ordini.Find(id);

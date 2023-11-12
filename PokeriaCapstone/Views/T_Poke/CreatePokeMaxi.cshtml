@@ -7,9 +7,9 @@
 
 <section class="d-flex justify-content-center align-items-center mySection flex-column">
     <div class="text-center">
-        <h2 class="text-center text-light fw-bold mb-5">Seleziona una base</h2>
+        <h2 class="text-center text-light fw-bold mb-5">Scegli una base</h2>
     </div>
-    
+
     <div id="divBasi" class="row row-cols-4">
     </div>
 </section>
@@ -17,7 +17,7 @@
 
 <section class="d-flex justify-content-center align-items-center mySection flex-column" id="ProteinsSection">
     <div class="text-center">
-        <h3 class="text-center text-light fw-bold mb-5">Seleziona una proteina</h3>
+        <h3 class="text-center text-light fw-bold mb-5">Scegli fino a due proteine</h3>
     </div>
     <a href="ProteinsAnchor"></a>
     <div id="divProteine" class="row row-cols-4 gap-2">
@@ -27,7 +27,7 @@
 
 <section class="d-flex justify-content-center align-items-center mySection flex-column" id="ContorniSection">
     <div class="text-center">
-        <h3 class="text-center text-light fw-bold mb-5">Seleziona fino a quattro contorni</h3>
+        <h3 class="text-center text-light fw-bold mb-5">Scegli fino a cinque contorni</h3>
     </div>
     <div id="divContorni" class="row row-cols-4">
     </div>
@@ -36,26 +36,23 @@
 
 <section class="d-flex justify-content-center align-items-center mySection flex-column" id="ToppingSection">
     <div class="text-center">
-        <h3 class="text-center text-light fw-bold mb-5">Seleziona un topping</h3>
+        <h3 class="text-center text-light fw-bold mb-5">Scegli fino a due toppings</h3>
     </div>
     <div id="divTopping" class="row row-cols-4">
     </div>
-</section>                                                      
-                                                                
-                            
+</section>
+
+
 <section class="d-flex justify-content-center align-items-center mySection flex-column" id="SalseSection">
     <div class="text-center">
-        <h3 class="text-center text-light fw-bold mb-5">Seleziona una salsa</h3>
+        <h3 class="text-center text-light fw-bold mb-5">Scegli fino a due salse</h3>
     </div>
     <div id="divSalse" class="row row-cols-4">
     </div>
-
-        <div class="d-flex justify-content-center mt-5">
-            <button class="btn btn-success" onclick="AddPoke()"> Crea la tua Poke</button>
-        </div>
-
+    <div class="d-flex justify-content-center mt-5">
+        <button class="btn btn-success" onclick="AddPoke()"> Crea la tua Poke Maxi</button>
+    </div>
 </section>
-
 
 @section scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -64,7 +61,7 @@
         $(document).ready(function () {
             $.ajax({
                 method: "GET",
-                url: "GetBasi",
+                url: "../T_Ingredienti/GetBasi",
                 success: function (data) {
                     console.log(data)
                     $.each(data, function (i, item) {
@@ -90,7 +87,7 @@
         $(document).ready(function () {
             $.ajax({
                 method: "GET",
-                url: "GetProteine",
+                url: "../T_Ingredienti/GetProteine",
                 success: function (data) {
                     console.log(data)
                     $.each(data, function (i, item) {
@@ -116,7 +113,7 @@
         $(document).ready(function () {
             $.ajax({
                 method: "GET",
-                url: "GetContorni",
+                url: "../T_Ingredienti/GetContorni",
                 success: function (data) {
                     console.log(data)
                     $.each(data, function (i, item) {
@@ -141,7 +138,7 @@
         $(document).ready(function () {
             $.ajax({
                 method: "GET",
-                url: "GetTopping",
+                url: "../T_Ingredienti/GetTopping",
                 success: function (data) {
                     console.log(data)
                     $.each(data, function (i, item) {
@@ -167,7 +164,7 @@
         $(document).ready(function () {
             $.ajax({
                 method: "GET",
-                url: "GetSalse",
+                url: "../T_Ingredienti/GetSalse",
                 success: function (data) {
                     console.log(data)
                     $.each(data, function (i, item) {
@@ -189,14 +186,14 @@
             })
         })
     </script>
-    <script src="~/Scripts/AggiuntaIngredientiPoke.js">
+    <script src="~/Scripts/AggiuntaIngredientiPokeMaxi.js">
     </script>
     <script>
         function AddPoke() {
             console.log(AddedPrices, SelectedItems)
             $.ajax({
                 method: 'GET',
-                url: "../T_Poke/CreateNewPokeComposta",
+                url: "../T_Poke/CreateNewPokeCompostaMaxi",
                 data: { Prezzi: JSON.stringify(AddedPrices), Ingredienti: JSON.stringify(SelectedItems) },
                 success: function (item) {
                     console.log(item)
@@ -206,7 +203,7 @@
                 },
             })
         }
-        
+
     </script>
 
 
