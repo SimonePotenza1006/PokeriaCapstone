@@ -26,7 +26,7 @@ namespace PokeriaCapstone.Models
         public bool? IsComposta { get; set; }
 
         [Column(TypeName = "money")]
-        [DisplayFormat(DataFormatString = "{0:C0}")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public decimal? Prezzo { get; set; }
 
         [NotMapped]

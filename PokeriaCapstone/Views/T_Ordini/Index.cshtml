@@ -6,32 +6,149 @@
 <section class="mySection">
     <div class="d-flex justify-content-center">
         <h2 class="text-light mt-3">
-            Le tue Poke
+            Le Poke del tuo ordine
         </h2>
     </div>
-    <div class="row gap-5">
+    <div class="row row-cols-lg-3 row-cols-sm-1 gap-5">
         @foreach (var item in Model)
         {
-            <div class="col d-flex flex-column justify-content-around bg-danger" width="200">
-                <div class="d-flex justify-content-center">
-                    <img src="~/Content/Assets/LogosAndOtherPics/PokeComposta.png" alt="foto poke composta" width="150" height="150" />
+            <div class="col d-flex justify-content-evenly cardSingleOrder p-3">
+                <div class="d-flex flex-column align-items-center">
+                    <div class="d-flex justify-content-center">
+                        <img src="~/Content/Assets/LogosAndOtherPics/PokeComposta.png" alt="foto poke composta" width="150" height="150" />
+                    </div>
+                    <div>
+                        <h3>
+                            @item.T_Poke.Prezzo
+                        </h3>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <ul>
-                        @foreach (var ingrediente in item.T_Poke.T_RelazionePokeIngredienti)
-                        {
-                            <li>
-                                @ingrediente.T_Ingredienti.NomeIngrediente
-                            </li>
-                        }
-                    </ul>
-                </div>
+                
                 <div>
-                    <a @Html.ActionLink("Elimina", "DeleteConfirmed", new { @id = item.IDOrdine }, new { @class = "btn btn-danger" })
+                    <div class="d-flex justify-content-center">
+                        <ul>
+                            @foreach (var ingrediente in item.T_Poke.T_RelazionePokeIngredienti)
+                            {
+                                <li>
+                                    @ingrediente.T_Ingredienti.NomeIngrediente
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="d-flex justify-content-center mb-2">
+                        <a @Html.ActionLink("Elimina", "DeleteConfirmed", new { @id = item.IDOrdine }, new { @class = "btn btn-danger" })
+                    </div>
                 </div>
             </div>
-
         }
+    </div>
+    <div class="text-center pb-5 mt-4">
+        <button type="button" class="btn fw-bold fs-5 bg-success text-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Effettua il pagamento <i class="fa-regular fa-credit-card"></i>
+        </button>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header rounded-top-3">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">Pagamento con carta</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="main-back">
+                        <div class="container m-auto mt-0 bg-white p-2 rounded-bottom-3">
+                            <div class="row">
+
+                                <div class="col-12">
+                                    <form>
+                                        <div class="card-data flex-fill flex-vertical">
+                                            <div class="flex-between flex-vertical-center">
+                                                <div class="card-property-title d-flex flex-column">
+                                                    <strong>Numero della carta</strong>
+                                                    <span>Inserisci le 16 cifre presenti sulla carta</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex-between">
+                                                <div class="card-number flex-vertical-center flex-fill">
+                                                    <div class="card-number-field d-flex align-items-center flex-fill">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px">
+                                                            <path fill="#ff9800" d="M32 10A14 14 0 1 0 32 38A14 14 0 1 0 32 10Z" />
+                                                            <path fill="#d50000" d="M16 10A14 14 0 1 0 16 38A14 14 0 1 0 16 10Z" />
+                                                            <path fill="#ff3d00" d="M18,24c0,4.755,2.376,8.95,6,11.48c3.624-2.53,6-6.725,6-11.48s-2.376-8.95-6-11.48 C20.376,15.05,18,19.245,18,24z" />
+                                                        </svg>
+                                                        <input type="text" placeholder="NUMERO DALLA CARTA" class="form-control" id="cardNumber" maxlength="19" name="cardNumber" data-bound="carddigits_mock" data-def="0000 0000 0000 0000" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex-between">
+                                                <div class="card-property-title d-flex flex-column">
+                                                    <strong>Data di scadenza</strong>
+                                                    <span>Inserisci la data di scadenza</span>
+                                                </div>
+                                                <div class="card-property-value d-flex">
+                                                    <div class="input-container half-width">
+                                                        <input class="numbers month-own" data-def="00" type="text" data-bound="mm_mock" placeholder="MM" />
+                                                    </div>
+                                                    <span class="m-md">/</span>
+                                                    <div class="input-container half-width">
+                                                        <input class="numbers year-own" data-def="01" type="text" data-bound="yy_mock" placeholder="AA" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex-between">
+                                                <div class="card-property-title d-flex flex-column">
+                                                    <strong>CVV</strong>
+                                                    <span>
+                                                        Inserisci il CVV presente sul retro della carta
+                                                    </span>
+                                                </div>
+                                                <div class="card-property-value">
+                                                    <div class="input-container">
+                                                        <input id="cvc" placeholder="CVV" maxlength="3" onkeypress="return onlyNumberKey(event)" type="password" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex-between">
+                                                <div class="card-property-title d-flex flex-column">
+                                                    <strong>Titolare della carta</strong>
+                                                    <span>Inserisci il nome</span>
+                                                </div>
+                                                <div class="card-property-value">
+                                                    <div class="input-container">
+                                                        <input id="name" data-bound="name_mock" data-def="Mr. Cardholder" type="text" class="uppercase" placeholder="Titolare della carta" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex-between">
+                                                <div class="card-property-title d-flex flex-column">
+                                                    <strong>Numero di telefono</strong>
+                                                    <span>Inserisci il n. di telefono</span>
+                                                </div>
+                                                <div class="card-property-value">
+                                                    <div class="input-container">
+                                                        <input id="phone" type="text" placeholder="N. DI TELEFONO" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center mt-3">
+                                            <a href="" class="btn pointer w-50" style="background:darkorange">
+                                                Procedi
+                                            </a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

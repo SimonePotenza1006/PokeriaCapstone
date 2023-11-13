@@ -49,3 +49,19 @@
     height: 250px;
     width: 250px;
 }
+
+#navbar{
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+}
+
+.background {
+    margin-top: 60px;
+}
+
+.cardSingleOrder {
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 20px;
+}
