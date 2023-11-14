@@ -16,6 +16,10 @@ namespace PokeriaCapstone.Views.Home
     {
         private ModelDBContext db = new ModelDBContext();
 
+        public ActionResult ListaIngredienti()
+        {
+            return View(db.T_Ingredienti.ToList());
+        }
 
         // GET: T_Ingredienti
         public ActionResult Index()
@@ -65,7 +69,7 @@ namespace PokeriaCapstone.Views.Home
                 }
                 db.T_Ingredienti.Add(t_Ingredienti);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListaIngredienti");
 
         }
 
@@ -100,30 +104,16 @@ namespace PokeriaCapstone.Views.Home
             return View(t_Ingredienti);
         }
 
-        // GET: T_Ingredienti/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            T_Ingredienti t_Ingredienti = db.T_Ingredienti.Find(id);
-            if (t_Ingredienti == null)
-            {
-                return HttpNotFound();
-            }
-            return View(t_Ingredienti);
-        }
+    
 
         // POST: T_Ingredienti/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public ActionResult DeleteConfirmed(int id)
         {
             T_Ingredienti t_Ingredienti = db.T_Ingredienti.Find(id);
             db.T_Ingredienti.Remove(t_Ingredienti);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ListaIngredienti");
         }
 
         protected override void Dispose(bool disposing)

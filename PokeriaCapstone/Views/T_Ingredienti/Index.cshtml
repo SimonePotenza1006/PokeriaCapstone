@@ -195,18 +195,19 @@
         function AddPoke() {
             console.log(AddedPrices, SelectedItems)
             $.ajax({
-                method: 'GET',
+                method: 'POST',
                 url: "../T_Poke/CreateNewPokeComposta",
                 data: { Prezzi: JSON.stringify(AddedPrices), Ingredienti: JSON.stringify(SelectedItems) },
                 success: function (item) {
                     console.log(item)
+                    location.href = "@Url.Action("Index", "T_Ordini", new { area = "" })"
                 },
                 error: function (e) {
                     console.log(e)
                 },
             })
         }
-        
+
     </script>
 
 

@@ -2,6 +2,7 @@ namespace PokeriaCapstone.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -20,13 +21,16 @@ namespace PokeriaCapstone.Models
 
         [Required]
         [StringLength(30)]
+        [DisplayName("Nome Ingrediente")]
         public string NomeIngrediente { get; set; }
 
         [Required]
         [StringLength(20)]
+        [DisplayName("Tipo Ingrediente")]
         public string TipoIngrediente { get; set; }
 
         [Column(TypeName = "money")]
+        [DisplayName("Prezzo Aggiuntivo")]
         public decimal? PrezzoAggiuntivo { get; set; }
 
 
@@ -35,6 +39,7 @@ namespace PokeriaCapstone.Models
 
         [Required]
         [StringLength(150)]
+        [DisplayName("Foto")]
         public string FotoIngrediente { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

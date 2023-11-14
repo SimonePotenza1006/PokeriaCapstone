@@ -60,7 +60,7 @@ namespace PokeriaCapstone.Controllers
 
         
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult CreateNewPokeComposta(string Prezzi, string Ingredienti)
         {
             List<decimal> PrezziList = JsonConvert.DeserializeObject<List<decimal>>(Prezzi);
@@ -89,7 +89,7 @@ namespace PokeriaCapstone.Controllers
             return RedirectToAction("Index", "T_Ordini");
         }
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult CreateNewPokeCompostaMaxi(string Prezzi, string Ingredienti)
         {
             List<decimal> PrezziList = JsonConvert.DeserializeObject<List<decimal>>(Prezzi);
@@ -218,7 +218,7 @@ namespace PokeriaCapstone.Controllers
 
             PokeToAdd.NomePoke = pokeMenu.NomePokeMenu;
             PokeToAdd.IsComposta = false;
-            PokeToAdd.FotoPoke = pokeMenu.Immagine.ToString();
+            PokeToAdd.FotoPoke = pokeMenu.Immagine.FileName;
             PokeToAdd.Prezzo = Convert.ToDecimal(pokeMenu.Prezzo);
 
             db.T_Poke.Add(PokeToAdd);
@@ -276,7 +276,7 @@ namespace PokeriaCapstone.Controllers
 
             Session["CreationComplete"] = "Poke correttamente inserita nel menu";
 
-            return View("Index", "Home");
+            return RedirectToAction("Menu");
         }
 
         public ActionResult Menu()

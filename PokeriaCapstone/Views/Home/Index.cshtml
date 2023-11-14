@@ -1,10 +1,23 @@
 ﻿<main>
 
-    @if (Session["Username"] != null)
+    @if (User.IsInRole("Admin"))
     {
-        <h1> Bentornato @Session["Username"] </h1>
+        <div class="d-flex justify-content-center">
+            <div>
+                <h2 class="text-center fw-bold">
+                    Bentornato capo!
+                </h2>
+                <h4 class="text-center">
+                    Cosa vuoi fare?
+                </h4>
+                <div>
+                    <ul>
+                        <li href="">Visualizza la lista degli ingredienti</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     }
-
 
     <div>
         <div class="HeroSectionHome d-flex justify-content-center">
@@ -68,6 +81,20 @@
 
 
 
-    <a class="btn btn-success" href="/T_Ingredienti/Index">Componi la tua poke</a>
+    <div class="mt-4 row row-cols-lg-3 row-cols-sm-1 gap-4 justify-content-center mt-5">
+        <div class="col d-flex flex-column align-items-center box3">
+            <img class="pngHome mt-4" src="~/Content/Assets/LogosAndOtherPics/ComponiPokeRegular.jpg" />
+            <a href="/T_Ingredienti/Index" class="btn btn-success mt-3 mb-2">Componi la tua Poke Regular</a>
+        </div>
+        <div class="col d-flex flex-column align-items-center box3">
+            <img class="pngHome mt-4" src="~/Content/Assets/LogosAndOtherPics/ComponiPokeMaxi.jpg" />
+            <a href="/T_Poke/CreatePokeMaxi" class="btn btn-success mt-3 mb-2">Componi la tua Poke Maxi</a>
+        </div>
+        <div class="col d-flex flex-column align-items-center box3">
+            <img class="pngHome mt-4" src="~/Content/Assets/LogosAndOtherPics/VisualizzaMenu.jpg" />
+            <a href="/T_Poke/Menu" class="btn btn-success mt-3 mb-2">Guarda il menu</a>
+        </div>
+    </div>
+
 
 </main>

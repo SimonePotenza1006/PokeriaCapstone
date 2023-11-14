@@ -3,49 +3,48 @@
 @{
     ViewBag.Title = "Menu";
 }
+<div>
+    <h2 class="text-center mt-3">Menu</h2>
+</div>
 
-<h2>Menu</h2>
+<div class="row row-cols-lg-2 row-cols-sm-1 g-2">
+    @foreach (var item in Model)
+    {
+        <div class="col d-flex justify-content-evenly cardSingleOrder p-2">
+            <div class="d-flex flex-column align-items-center">
+                <div class="d-flex justify-content-center">
+                    <img src="~/Content/Assets/FotoPokeMenu/@item.FotoPoke" alt="foto poke Menu" width="150" height="150" />
+                </div>
+                <div>
+                    <h2>
+                        Prezzo:
+                    </h2>
+                </div>
+                <div>
+                    <h3>
+                        @item.Prezzo.ToString()
+                    </h3>
+                </div>
+            </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NomePoke)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsComposta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Prezzo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FotoPoke)
-        </th>
-        <th></th>
-    </tr>
+            <div>
+                <div class="d-flex justify-content-center">
+                    <ul>
+                        @foreach (var ingrediente in item.T_RelazionePokeIngredienti)
+                        {
+                            <li>
+                                @ingrediente.T_Ingredienti.NomeIngrediente
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="d-flex justify-content-center mb-2">
+                    <a @Html.ActionLink("Elimina", "DeleteConfirmed", new { @id = item.IDPoke }, new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomePoke)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsComposta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prezzo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FotoPoke)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDPoke }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDPoke }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDPoke })
-        </td>
-    </tr>
-}
 
-</table>
+

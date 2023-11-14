@@ -14,12 +14,24 @@ namespace PokeriaCapstone.Controllers
     {
         private ModelDBContext db = new ModelDBContext();
 
-        // GET: T_Ordini
+
         public ActionResult Index()
         {
             int idUser = Convert.ToInt32(Session["IDUser"]);
             List<T_Ordini> listaOrdini = db.T_Ordini.Where(d => d.DataOrdine == null && d.FKIDUser == idUser).ToList();
             return View(listaOrdini);
+        }
+
+        public ActionResult ConfermaOrdine()
+        {
+            int idUser = Convert.ToInt32(Session["IDUser"]);
+            foreach (T_Ordini ordine in db.T_Ordini.Where(d => d.DataOrdine == null && d.FKIDUser == idUser))
+            {
+                ordine.DataOrdine = DateTime.Now;
+            }
+            db.SaveChanges();
+            ViewBag.OrdineConfermato = "Grazie mille! Il pagamento é andato a buon fine e il tuo ordine verrá consegnato il prima possibile!";
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: T_Ordini/Details/5
