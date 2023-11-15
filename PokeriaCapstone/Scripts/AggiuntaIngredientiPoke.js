@@ -26,7 +26,6 @@ let addToPoke = function (id) {
                 document.getElementById("ProteinsSection").scrollIntoView({ behavior: 'smooth' });
                 console.log("Ingredienti scelti:", SelectedItems)
                 console.log("Prezzi aggiuntivi:", AddedPrices)
-
             }
             break;
         case "Proteina":

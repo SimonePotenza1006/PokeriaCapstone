@@ -30,6 +30,7 @@ namespace PokeriaCapstone.Controllers
                 FormsAuthentication.SetAuthCookie(utente.Username, false);
                 Session["Username"] = utente.Username;
                 Session["IDUser"] = utente.IDUser;
+                Session["UserRole"] = utente.Role.ToString();
                 return RedirectToAction("Index");
         }
 

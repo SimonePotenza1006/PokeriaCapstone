@@ -35,10 +35,10 @@ namespace PokeriaCapstone.Models
             throw new NotImplementedException();
         }
 
-        public override string[] GetRolesForUser(string username)
+        public override string[] GetRolesForUser(string email)
         {
             ModelDBContext db = new ModelDBContext();
-            T_User user = db.T_User.Where(u => u.Username == username).FirstOrDefault();
+            T_User user = db.T_User.Where(u => u.Email == email).FirstOrDefault();
             List<string> roles = new List<string>();
             roles.Add(user.Role);
             return roles.ToArray();

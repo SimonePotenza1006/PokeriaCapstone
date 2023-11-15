@@ -149,30 +149,19 @@ namespace PokeriaCapstone.Controllers
             return View(t_Poke);
         }
 
-        // GET: T_Poke/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            T_Poke t_Poke = db.T_Poke.Find(id);
-            if (t_Poke == null)
-            {
-                return HttpNotFound();
-            }
-            return View(t_Poke);
-        }
-
-        // POST: T_Poke/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+      
+        [HttpGet]
         public ActionResult DeleteConfirmed(int id)
         {
+            
+            foreach (T_RelazionePokeIngredienti relazione in db.T_RelazionePokeIngredienti.Where(r => r.FKIDPoke == id))
+            {
+                db.T_RelazionePokeIngredienti.Remove(relazione);
+            }
             T_Poke t_Poke = db.T_Poke.Find(id);
             db.T_Poke.Remove(t_Poke);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("MenuForAdmin");
         }
 
         protected override void Dispose(bool disposing)
@@ -280,6 +269,25 @@ namespace PokeriaCapstone.Controllers
         }
 
         public ActionResult Menu()
+        {
+            List<T_Poke> Menu = db.T_Poke.Where(p => p.IsComposta == false).ToList();
+            return View(Menu);
+        }
+
+        public ActionResult AddToCart(int id)
+        {
+            int idUser = Convert.ToInt32(Session["IDUser"]);
+            db.T_Ordini.Add(new T_Ordini
+            {
+                FKIDUser = idUser,
+                FKIDPoke = id,
+                DataOrdine = null
+            }); 
+            db.SaveChanges();
+            return RedirectToAction("Index", "T_Ordini");
+        }
+
+        public ActionResult MenuForAdmin()
         {
             List<T_Poke> Menu = db.T_Poke.Where(p => p.IsComposta == false).ToList();
             return View(Menu);

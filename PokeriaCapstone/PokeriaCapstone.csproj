@@ -282,6 +282,7 @@
     <Content Include="Views\T_Poke\CreatePokeMaxi.cshtml" />
     <Content Include="Views\T_Poke\Menu.cshtml" />
     <Content Include="Views\T_Ingredienti\ListaIngredienti.cshtml" />
+    <Content Include="Views\T_Poke\MenuForAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

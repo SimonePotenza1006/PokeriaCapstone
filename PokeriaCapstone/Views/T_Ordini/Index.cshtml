@@ -9,42 +9,86 @@
             Le Poke del tuo ordine
         </h2>
     </div>
-    <div class="row row-cols-lg-3 row-cols-sm-1 gap-5">
+    <div class="d-flex justify-content-evenly mt-3 mb-5">
+        <div><a class="btn btn-warning" href="/T_Ingredienti/Index">Componi una Poke Regular</a></div>
+        <div><a class="btn btn-warning" href="/T_Poke/CreatePokeMaxi">Componi una Poke Maxi</a></div>
+        <div><a class="btn btn-warning" href="/T_Poke/Menu">Visualizza il Menú</a></div>
+    </div>
+    <div class="row row-cols-lg-3 row-cols-sm-1 gap-5 d-flex justify-content-center">
         @foreach (var item in Model)
         {
-            <div class="col d-flex justify-content-evenly cardSingleOrder p-3">
-                <div class="d-flex flex-column align-items-center">
-                    <div class="d-flex justify-content-center">
-                        <img src="~/Content/Assets/LogosAndOtherPics/PokeComposta.png" alt="foto poke composta" width="150" height="150" />
+            if (item.T_Poke.IsComposta == false)
+            {
+                <div class="col d-flex justify-content-evenly cardSingleOrder p-3">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="d-flex justify-content-center">
+                            <img src="~/Content/Assets/FotoPokeMenu/@Html.DisplayFor(model => item.T_Poke.FotoPoke ) " alt="foto poke composta" width="150" height="150" />
+                        </div>
+                        <div>
+                            <h2>
+                                Prezzo:
+                            </h2>
+                        </div>
+                        <div>
+                            <h3>
+                                @Html.DisplayFor(model => item.T_Poke.Prezzo)
+                            </h3>
+                        </div>
                     </div>
+
                     <div>
-                        <h2>
-                            Prezzo:
-                        </h2>
-                    </div>
-                    <div>
-                        <h3>
-                            @item.T_Poke.Prezzo.ToString()
-                        </h3>
+                        <div class="d-flex justify-content-center">
+                            <ul>
+                                @foreach (var ingrediente in item.T_Poke.T_RelazionePokeIngredienti)
+                                {
+                                    <li>
+                                        @ingrediente.T_Ingredienti.NomeIngrediente
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="d-flex justify-content-center mb-2">
+                            <a @Html.ActionLink("Elimina", "DeleteConfirmed", new { @id = item.IDOrdine }, new { @class = "btn btn-danger" })
+                        </div>
                     </div>
                 </div>
-                
-                <div>
-                    <div class="d-flex justify-content-center">
-                        <ul>
-                            @foreach (var ingrediente in item.T_Poke.T_RelazionePokeIngredienti)
-                            {
-                                <li>
-                                    @ingrediente.T_Ingredienti.NomeIngrediente
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                    <div class="d-flex justify-content-center mb-2">
-                        <a @Html.ActionLink("Elimina", "DeleteConfirmed", new { @id = item.IDOrdine }, new { @class = "btn btn-danger" })
-                    </div>
-                </div>
+            } else
+                {
+    <div class="col d-flex justify-content-evenly cardSingleOrder p-3">
+        <div class="d-flex flex-column align-items-center">
+            <div class="d-flex justify-content-center">
+                <img src="~/Content/Assets/LogosAndOtherPics/PokeComposta.png" alt="foto poke composta" width="150" height="150" />
             </div>
+            <div>
+                <h2>
+                    Prezzo:
+                </h2>
+            </div>
+            <div>
+                <h3>
+                    @Html.DisplayFor(model => item.T_Poke.Prezzo)
+                </h3>
+            </div>
+        </div>
+
+        <div>
+            <div class="d-flex justify-content-center">
+                <ul>
+                    @foreach (var ingrediente in item.T_Poke.T_RelazionePokeIngredienti)
+                    {
+                        <li>
+                            @ingrediente.T_Ingredienti.NomeIngrediente
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="d-flex justify-content-center mb-2">
+                <a @Html.ActionLink("Elimina", "DeleteConfirmed", new { @id = item.IDOrdine }, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    </div>
+                }
+
         }
     </div>
     <div class="text-center pb-5 mt-4">
