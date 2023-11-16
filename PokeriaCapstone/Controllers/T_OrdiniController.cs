@@ -22,6 +22,29 @@ namespace PokeriaCapstone.Controllers
             return View(listaOrdini);
         }
 
+        public ActionResult OrdersForAdmin()
+        {
+            List<T_Ordini> listaOrdiniAdmin = db.T_Ordini.OrderByDescending(d => d.DataOrdine).ToList();
+            return View(listaOrdiniAdmin);
+        }
+
+        public JsonResult TodaysOrders()
+        {
+            List<T_Ordini> ListaOrdiniOdierni = new List<T_Ordini>();
+            foreach (T_Ordini ordine in db.T_Ordini.ToList())
+                ListaOrdiniOdierni.Add(new T_Ordini
+                {
+                    IDOrdine = ordine.IDOrdine,
+                    FKIDUser = ordine.FKIDUser,
+                    FKIDPoke = ordine.FKIDPoke,
+                    DataOrdine = ordine.DataOrdine,
+                });
+   
+                return Json(ListaOrdiniOdierni.Where(o => o.DataOrdine == DateTime.Today).ToList(), JsonRequestBehavior.AllowGet);
+        }
+
+
+
         public ActionResult ConfermaOrdine()
         {
             int idUser = Convert.ToInt32(Session["IDUser"]);
@@ -33,6 +56,8 @@ namespace PokeriaCapstone.Controllers
             ViewBag.OrdineConfermato = "Grazie mille! Il pagamento é andato a buon fine e il tuo ordine verrá consegnato il prima possibile!";
             return RedirectToAction("Index", "Home");
         }
+
+
 
         // GET: T_Ordini/Details/5
         public ActionResult Details(int? id)

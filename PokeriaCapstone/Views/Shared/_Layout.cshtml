@@ -34,7 +34,18 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li><a href="/T_Ingredienti/Index" class="nav-link">Componi Poke Regular</a></li>
+                    <li><a href="/T_Poke/CreatePokeMaxi" class="nav-link">Componi Poke Maxi</a></li>
+                    <li><a href="/T_Poke/Menu" class="nav-link">Menú</a></li>
+                    <li><a href="/T_Ordini/Index" class="nav-link">Carrello</a></li>
+                    @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    } else
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+
                 </ul>
             </div>
         </div>

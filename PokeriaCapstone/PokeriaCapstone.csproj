@@ -283,6 +283,7 @@
     <Content Include="Views\T_Poke\Menu.cshtml" />
     <Content Include="Views\T_Ingredienti\ListaIngredienti.cshtml" />
     <Content Include="Views\T_Poke\MenuForAdmin.cshtml" />
+    <Content Include="Views\T_Ordini\OrdersForAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

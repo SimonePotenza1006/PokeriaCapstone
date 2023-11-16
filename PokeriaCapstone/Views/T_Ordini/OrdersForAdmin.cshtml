@@ -1,0 +1,55 @@
+﻿@model IEnumerable<PokeriaCapstone.Models.T_Ordini>
+
+@{
+    ViewBag.Title = "OrdersForAdmin";
+}
+
+<br />
+<br />
+<h2 class="text-light fw-bold text-center">Pannello di controllo degli ordini</h2>
+
+<button class="btn btn-warning" onclick="LoadOrders()">Carica ordini odierni</button>
+
+<table class="table mb-0">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.T_Poke.NomePoke)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.T_User.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataOrdine)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.T_Poke.NomePoke)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.T_User.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataOrdine)
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts {
+    <script>
+        function LoadOrders() {
+            $.ajax({
+                method: "POST",
+                url: "TodaysOrders",
+                success: function (data) {
+                    console.log(data)
+                }
+            })
+        }
+    </script>
+}

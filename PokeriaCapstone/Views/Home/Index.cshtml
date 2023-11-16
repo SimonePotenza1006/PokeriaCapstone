@@ -10,7 +10,7 @@
 
     @if (User.IsInRole("Admin"))
     {
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center bg-warning p-3 rounded-pill">
             <div>
                 <h2 class="text-center fw-bold">
                     Bentornato capo!
@@ -18,11 +18,12 @@
                 <h4 class="text-center">
                     Cosa vuoi fare?
                 </h4>
-                <div>
-                    <ul>
-                        <li><a href="/T_Ingredienti/ListaIngredienti">Visualizza la lista degli Ingredietni</a></li>
-                        <li><a href="/T_Poke/MenuForAdmin">Visualizza e modifica il Menú</a></li>
-                    </ul>
+                <div class="d-flex flex-column">
+
+                        <a class="btn btn-success mb-1" href="/T_Ingredienti/ListaIngredienti">Visualizza la lista degli Ingredietni</a>
+                        <a class="btn btn-success mb-1" href="/T_Poke/MenuForAdmin">Visualizza e modifica il Menú</a>
+                        <a class="btn btn-success mb-1" href="/T_Ordini/OrdersForAdmin">Visualizza la lista degli ordini</a>
+
                 </div>
             </div>
         </div>

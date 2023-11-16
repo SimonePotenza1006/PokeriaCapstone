@@ -8,6 +8,7 @@ namespace PokeriaCapstone.Models
 {
     public class SiteRole : RoleProvider
     {
+        private ModelDBContext db = new ModelDBContext();
         public override string ApplicationName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
@@ -35,10 +36,9 @@ namespace PokeriaCapstone.Models
             throw new NotImplementedException();
         }
 
-        public override string[] GetRolesForUser(string email)
+        public override string[] GetRolesForUser(string username)
         {
-            ModelDBContext db = new ModelDBContext();
-            T_User user = db.T_User.Where(u => u.Email == email).FirstOrDefault();
+            T_User user = db.T_User.Where((u => u.Username == username)).FirstOrDefault();
             List<string> roles = new List<string>();
             roles.Add(user.Role);
             return roles.ToArray();
