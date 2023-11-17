@@ -158,6 +158,10 @@ namespace PokeriaCapstone.Controllers
             {
                 db.T_RelazionePokeIngredienti.Remove(relazione);
             }
+            foreach (T_Ordini ordine in db.T_Ordini.Where(o => o.FKIDPoke == id))
+            {
+                db.T_Ordini.Remove(ordine);
+            }
             T_Poke t_Poke = db.T_Poke.Find(id);
             db.T_Poke.Remove(t_Poke);
             db.SaveChanges();

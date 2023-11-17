@@ -8,6 +8,13 @@
         </div>
     </div>
 
+    <div class="text-center">
+        @{ 
+            ViewBag.OrdineConfermato = "Grazie mille! Il pagamento é andato a buon fine e il tuo ordine verrá consegnato il prima possibile!";
+        }
+    </div>
+    
+
     @if (User.IsInRole("Admin"))
     {
         <div class="d-flex justify-content-center bg-warning p-3 rounded-pill">
@@ -85,7 +92,7 @@
 
 
 
-    <div class="mt-4 row row-cols-lg-3 row-cols-sm-1 gap-4 justify-content-center mt-5">
+    <div class="mt-4 row row-cols-lg-3 row-cols-sm-1 gap-4 justify-content-center mt-5 pb-5">
         <div class="col d-flex flex-column align-items-center box3">
             <img class="pngHome mt-4" src="~/Content/Assets/LogosAndOtherPics/ComponiPokeRegular.jpg" />
             <a href="/T_Ingredienti/Index" class="btn btn-success mt-3 mb-2">Componi la tua Poke Regular</a>

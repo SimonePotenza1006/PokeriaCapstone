@@ -7,10 +7,9 @@
 <br />
 <br />
 <h2 class="text-light fw-bold text-center">Pannello di controllo degli ordini</h2>
+<br />
 
-<button class="btn btn-warning" onclick="LoadOrders()">Carica ordini odierni</button>
-
-<table class="table mb-0">
+<table class="table mb-0 mt-2">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.T_Poke.NomePoke)
@@ -20,6 +19,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DataOrdine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.T_User.Indirizzo)
         </th>
     </tr>
 
@@ -34,6 +36,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DataOrdine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.T_User.Indirizzo)
             </td>
         </tr>
     }

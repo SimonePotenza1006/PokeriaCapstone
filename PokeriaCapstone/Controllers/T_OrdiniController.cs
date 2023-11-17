@@ -55,6 +55,7 @@ namespace PokeriaCapstone.Controllers
             db.SaveChanges();
             ViewBag.OrdineConfermato = "Grazie mille! Il pagamento é andato a buon fine e il tuo ordine verrá consegnato il prima possibile!";
             return RedirectToAction("Index", "Home");
+            
         }
 
 

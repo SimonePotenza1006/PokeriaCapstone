@@ -2,6 +2,7 @@ namespace PokeriaCapstone.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -21,8 +22,10 @@ namespace PokeriaCapstone.Models
 
         [Required]
         [StringLength(20)]
+        [DisplayName("Nome Poke")]
         public string NomePoke { get; set; }
 
+        [DisplayName("É composta?")]
         public bool? IsComposta { get; set; }
 
         [Column(TypeName = "money")]
@@ -33,6 +36,7 @@ namespace PokeriaCapstone.Models
         public HttpPostedFileBase Immagine { get; set; }
 
         [StringLength(150)]
+        [DisplayName("Nome Poke")]
         public string FotoPoke { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

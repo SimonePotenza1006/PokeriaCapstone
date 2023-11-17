@@ -3,41 +3,45 @@
 @{
     ViewBag.Title = "MenuForAdmin";
 }
+<section class="mySection">
+    <br />
+    <h2 class="text-center">Gestione Menu</h2>
 
-<h2>Gestione Menu</h2>
+    <a href="/T_Poke/CreatePokeMenu" class="btn btn-success mb-3">
+        Inserisci una Poke nel Menú
+    </a>
+    <table class="table mb-0">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomePoke)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezzo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FotoPoke)
+            </th>
+            <th></th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table mb-0">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NomePoke)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Prezzo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FotoPoke)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomePoke)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prezzo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FotoPoke)
+                </td>
+                <td>
+                    @Html.ActionLink("Elimina dal Menú", "DeleteConfirmed", "T_Poke", new { id = item.IDPoke }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomePoke)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prezzo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FotoPoke)
-        </td>
-        <td>
-            @Html.ActionLink("Elimina dal Menú", "DeleteConfirmed", "T_Poke", new { id=item.IDPoke }, new { @class  = "btn btn-danger"})
-        </td>
-    </tr>
-}
+    </table>
+</section>
 
-</table>
